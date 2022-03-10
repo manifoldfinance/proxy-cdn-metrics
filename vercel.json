@@ -1,0 +1,22 @@
+{
+  "name": "analytics-cdn-proxy",
+  "scope": "manifoldfinance",
+  "build": {
+    "env": {}
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "x-frame-options", "value": "deny" },
+        { "key": "Host", "value": "cdn.segment.com" }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "destination": "https://cdn.segment.com/:path*"
+    }
+  ]
+}
